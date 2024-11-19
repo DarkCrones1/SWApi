@@ -60,7 +60,7 @@ public class Startup
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddSwaggerGen(options =>
         {
-            options.SwaggerDoc("v1", new OpenApiInfo { Title = "AW Project API", Version = "v1" });
+            options.SwaggerDoc("v1", new OpenApiInfo { Title = "SW Project API", Version = "v1" });
             var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             options.IncludeXmlComments(xmlFilePath);
@@ -181,7 +181,7 @@ public class Startup
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "AW Project API V1");
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "SW Project API V1");
             options.RoutePrefix = string.Empty;
         });
 
