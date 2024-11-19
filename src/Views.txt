@@ -1,0 +1,22 @@
+VW_ActiveUserAccount
+
+SELECT 
+    dbo.UserAccountUserData.UserAccountId, 
+    dbo.UserAccountUserData.UserDataId, 
+    dbo.UserAccount.UserName, 
+    dbo.UserAccount.Email, 
+    dbo.UserData.FirstName, 
+    dbo.UserData.MiddleName, 
+    dbo.UserData.LastName, 
+    dbo.UserData.Phone, 
+    dbo.UserData.CellPhone, 
+    dbo.UserData.FirstName + ' ' + ISNULL(dbo.UserData.MiddleName, '') + ' ' + dbo.UserData.LastName AS Name, 
+    dbo.UserAccount.UserAccountType
+FROM 
+    dbo.UserData 
+INNER JOIN 
+    dbo.UserAccountUserData ON dbo.UserData.Id = dbo.UserAccountUserData.UserDataId 
+INNER JOIN 
+    dbo.UserAccount ON dbo.UserAccountUserData.UserAccountId = dbo.UserAccount.Id
+
+
