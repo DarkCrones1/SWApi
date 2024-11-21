@@ -1,5 +1,6 @@
 using SW.Common.Interfaces.Repositories;
 using SW.Domain.Entities;
+using SW.Domain.Interfaces.Repositories;
 
 namespace SW.Domain.Interfaces;
 
@@ -7,11 +8,11 @@ public interface IUnitOfWork : IDisposable
 {
     ICrudRepository<DataDream> DataDreamRepository { get; }
 
-    ICrudRepository<UserAccount> UserAccountRepository { get; }
+    IUserAccountRepository UserAccountRepository { get; }
 
     ICatalogBaseRepository<UserCommend> UserCommendRepository { get; }
 
-    ICrudRepository<UserData> UserDataRepository { get; }
+    IUserDataRepository UserDataRepository { get; }
 
     ICrudRepository<UserDataCommend> UserDataCommendRepository { get; }
 

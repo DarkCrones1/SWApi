@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using SW.Common.Interfaces.Repositories;
 using SW.Domain.Entities;
 using SW.Domain.Interfaces;
-// using SW.Domain.Interfaces.Repositories;
+using SW.Domain.Interfaces.Repositories;
 using SW.Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -22,11 +22,11 @@ public class UnitOfWork : IUnitOfWork
 
     protected ICrudRepository<DataDream> _dataDreamRepository;
 
-    protected ICrudRepository<UserAccount> _userAccountRepository;
+    protected IUserAccountRepository _userAccountRepository;
 
     protected ICatalogBaseRepository<UserCommend> _userCommendRepository;
 
-    protected ICrudRepository<UserData> _userDataRepository;
+    protected IUserDataRepository _userDataRepository;
 
     protected ICrudRepository<UserDataCommend> _userDataCommendRepository;
 
@@ -52,11 +52,11 @@ public class UnitOfWork : IUnitOfWork
 
         _dataDreamRepository = new CrudRepository<DataDream>(_dbContext);
 
-        _userAccountRepository = new CrudRepository<UserAccount>(_dbContext);
+        _userAccountRepository = new UserAccountRepository(_dbContext);
 
         _userCommendRepository = new CatalogBaseRepository<UserCommend>(_dbContext);
         
-        _userDataRepository = new CrudRepository<UserData>(_dbContext);
+        _userDataRepository = new UserDataRepository(_dbContext);
 
         _userDataCommendRepository = new CrudRepository<UserDataCommend>(_dbContext);
 
@@ -69,11 +69,11 @@ public class UnitOfWork : IUnitOfWork
 
     public ICrudRepository<DataDream> DataDreamRepository => _dataDreamRepository;
 
-    public ICrudRepository<UserAccount> UserAccountRepository => _userAccountRepository;
+    public IUserAccountRepository UserAccountRepository => _userAccountRepository;
 
     public ICatalogBaseRepository<UserCommend> UserCommendRepository => _userCommendRepository;
 
-    public ICrudRepository<UserData> UserDataRepository => _userDataRepository;
+    public IUserDataRepository UserDataRepository => _userDataRepository;
 
     public ICrudRepository<UserDataCommend> UserDataCommendRepository => _userDataCommendRepository;
 

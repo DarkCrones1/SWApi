@@ -45,19 +45,11 @@ public class TokenHelper : ITokenHelperService
         return accountType!.Value;
     }
 
-    public int GetCustomerId()
+    public int GetUserDataId()
     {
         var identity = _httpContextAccessor.HttpContext!.User.Identity as ClaimsIdentity;
-        var customerId = identity!.FindFirst("CustomerId");
+        var userDataId = identity!.FindFirst("UserDataId");
 
-        return int.Parse(customerId!.Value);
-    }
-
-    public int GetCraftmanId()
-    {
-        var identity = _httpContextAccessor.HttpContext!.User.Identity as ClaimsIdentity;
-        var craftmanId = identity!.FindFirst("CraftmanId");
-
-        return int.Parse(craftmanId!.Value);
+        return int.Parse(userDataId!.Value);
     }
 }

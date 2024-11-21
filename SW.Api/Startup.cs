@@ -19,9 +19,8 @@ using SW.Common.Interfaces.Services;
 using SW.Application.Services;
 using SW.Domain.Interfaces;
 using SW.Common.Helpers;
-// using SW.Domain.Interfaces.Repositories;
+using SW.Domain.Interfaces.Repositories;
 using SW.Domain.Interfaces.Services;
-// using SW.application.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 
@@ -116,7 +115,8 @@ public class Startup
         services.AddScoped(typeof(ICatalogBaseRepository<>), typeof(CatalogBaseRepository<>));
         services.AddScoped<ILocalStorageRepository, LocalStorageRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-        // services.AddScoped<IUserAccountRepository, UserAccountRepository>();
+        services.AddScoped<IUserAccountRepository, UserAccountRepository>();
+        services.AddScoped<IUserDataRepository, UserDataRepository>();
 
         // Add Serivces
         services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
@@ -124,7 +124,8 @@ public class Startup
         services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddScoped<IMiscellaneousService, MiscellaneousService>();
         services.AddScoped<ILocalStorageService, LocalStorageService>();
-        // services.AddScoped<IUserAccountService, UserAccountService>();
+        services.AddScoped<IUserAccountService, UserAccountService>();
+        services.AddScoped<IUserDataService, UserDataService>();
         services.AddScoped<ITokenHelperService, TokenHelper>();
         services.AddHttpContextAccessor();
 

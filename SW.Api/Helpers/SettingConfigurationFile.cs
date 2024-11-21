@@ -31,14 +31,5 @@ public class SettingConfigurationFile
         _instance = new SettingConfigurationFile(configuration);
     }
 
-    public int AdministratorAccountTypeId => int.Parse(_configuration.GetValue<string>("DefaultValues:administratorAccountTypeId")!);
-    public int CraftmanAccountTypeId => int.Parse(_configuration.GetValue<string>("DefaultValues:craftmanAccountTypeId")!);
-    public int CustomerAccountTypeId => int.Parse(_configuration.GetValue<string>("DefaultValues:customerAccountTypeId")!);
-
-    public string UrlLocalImageCraft => _configuration.GetValue<string>("DefaultValues:craftImageLocalStorageBaseUrl") ?? string.Empty;
-    public string UrlLocalImageProfileCraftman => _configuration.GetValue<string>("DefaultValues:ImageProfileCraftmanLocalStorageBaseUrl") ?? string.Empty;
-    public string UrlLocalImageProfileCustomer => _configuration.GetValue<string>("DefaultValues:ImageProfileCustomerLocalStorageBaseUrl") ?? string.Empty;
-    public string UrlLocalImageCategory => _configuration.GetValue<string>("DefaultValues:categoryImageLocalStorageBaseUrl") ?? string.Empty;
-    public string UrlLocalImageCustomerDocument => _configuration.GetValue<string>("DefaultValues:customerDocuments") ?? string.Empty;
-    public string UrlLocalImageCraftmanDocument => _configuration.GetValue<string>("DefaultValues:craftmanDocuments") ?? string.Empty;
+    
 }

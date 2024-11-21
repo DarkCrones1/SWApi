@@ -1,20 +1,16 @@
-// using System.Linq.Expressions;
-// using AW.Common.Entities;
-// using AW.Common.Interfaces.Services;
-// using AW.Domain.Dto.QueryFilters;
-// using AW.Domain.Entities;
+using System.Linq.Expressions;
+using SW.Common.Entities;
+using SW.Common.Interfaces.Services;
+using SW.Domain.Dto.QueryFilters;
+using SW.Domain.Entities;
 
-// namespace AW.Domain.Interfaces.Services;
+namespace SW.Domain.Interfaces.Services;
 
-// public interface IUserAccountService : ICrudService<UserAccount>
-// {
-//     Task<int> CreateUser(UserAccount user);
-//     Task<ActiveUserAccountCustomer> GetUserAccountCustomer(int id);
-//     Task<ActiveUserAccountCustomer> GetUserAccountCustomerToLogin(Expression<Func<ActiveUserAccountCustomer, bool>> filters);
+public interface IUserAccountService : ICrudService<UserAccount>
+{
+    Task<int> CreateUser(UserAccount user);
+    Task<ActiveUserAccount> GetUserAccount(int id);
+    Task<ActiveUserAccount> GetUserAccountToLogin(Expression<Func<ActiveUserAccount, bool>> filters);
 
-//     Task<ActiveUserAccountCraftman> GetUserAccountCraftman(int id);
-//     Task<ActiveUserAccountCraftman> GetUserAccountCraftmanToLogin(Expression<Func<ActiveUserAccountCraftman, bool>> filters);
-
-//     Task<PagedList<UserAccount>> GetPagedCraftman(UserAccountQueryFilter filter);
-//     Task<PagedList<UserAccount>> GetPagedCustomer(UserAccountQueryFilter filter);
-// }
+    Task<PagedList<UserAccount>> GetPaged(UserAccountQueryFilter filter);
+}

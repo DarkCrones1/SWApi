@@ -1,0 +1,3 @@
+para hacer la migración y sacar el script de la database => dotnet ef migrations script -o script.sql -i
+
+para hacer el publish de la api => dotnet publish --self-contained -c Release -r win-x64
