@@ -116,6 +116,7 @@ public class Startup
         services.AddScoped<ILocalStorageRepository, LocalStorageRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserAccountRepository, UserAccountRepository>();
+        services.AddScoped<IUserCommendRepository, UserCommendRepository>();
         services.AddScoped<IUserDataRepository, UserDataRepository>();
 
         // Add Serivces
@@ -125,6 +126,7 @@ public class Startup
         services.AddScoped<IMiscellaneousService, MiscellaneousService>();
         services.AddScoped<ILocalStorageService, LocalStorageService>();
         services.AddScoped<IUserAccountService, UserAccountService>();
+        services.AddScoped<IUserCommendService, UserCommendService>();
         services.AddScoped<IUserDataService, UserDataService>();
         services.AddScoped<ITokenHelperService, TokenHelper>();
         services.AddHttpContextAccessor();

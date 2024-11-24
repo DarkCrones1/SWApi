@@ -10,7 +10,7 @@ public interface IUnitOfWork : IDisposable
 
     IUserAccountRepository UserAccountRepository { get; }
 
-    ICatalogBaseRepository<UserCommend> UserCommendRepository { get; }
+    IUserCommendRepository UserCommendRepository { get; }
 
     IUserDataRepository UserDataRepository { get; }
 

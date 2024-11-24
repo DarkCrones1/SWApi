@@ -24,7 +24,7 @@ public class UnitOfWork : IUnitOfWork
 
     protected IUserAccountRepository _userAccountRepository;
 
-    protected ICatalogBaseRepository<UserCommend> _userCommendRepository;
+    protected IUserCommendRepository _userCommendRepository;
 
     protected IUserDataRepository _userDataRepository;
 
@@ -54,7 +54,7 @@ public class UnitOfWork : IUnitOfWork
 
         _userAccountRepository = new UserAccountRepository(_dbContext);
 
-        _userCommendRepository = new CatalogBaseRepository<UserCommend>(_dbContext);
+        _userCommendRepository = new UserCommendRepository(_dbContext);
         
         _userDataRepository = new UserDataRepository(_dbContext);
 
@@ -71,7 +71,7 @@ public class UnitOfWork : IUnitOfWork
 
     public IUserAccountRepository UserAccountRepository => _userAccountRepository;
 
-    public ICatalogBaseRepository<UserCommend> UserCommendRepository => _userCommendRepository;
+    public IUserCommendRepository UserCommendRepository => _userCommendRepository;
 
     public IUserDataRepository UserDataRepository => _userDataRepository;
 

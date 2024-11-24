@@ -39,6 +39,17 @@ public class MappingProfile : Profile
             opt => opt.MapFrom(src => EnumHelper.GetDescription<Gender>((Gender)src.Gender!))
         );
 
+        CreateMap<UserCommend, UserCommendResponseDto>().ForMember(
+            dest => dest.Status,
+            opt => opt.MapFrom(src => StatusDeletedHelper.GetStatusDeletedEntity(src.IsDeleted))
+        ).ForMember(
+            dest => dest.IsActive,
+            opt => opt.MapFrom(src => !src.IsDeleted)
+        ).ForMember(
+            dest => dest.SleepQualityStatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<SleepQualityStatus>((SleepQualityStatus)src.SleepQualityStatus))
+        );
+
         // Create
 
         CreateMap<UserAccountCreateRequestDto, UserAccount>()
@@ -76,6 +87,21 @@ public class MappingProfile : Profile
             }
         );
 
+        CreateMap<UserCommendCreateRequestDto, UserCommend>()
+        .ForMember(
+            dest => dest.Code,
+            opt => opt.MapFrom(src => Guid.NewGuid())
+        ).ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        ).ForMember(
+            dest => dest.IsDeleted,
+            opt => opt.MapFrom(src => ValuesStatusPropertyEntity.IsNotDeleted)
+        ).ForMember(
+            dest => dest.CreatedBy,
+            opt => opt.MapFrom(src => "admin")
+        );
+
         // Update
 
         CreateMap<UserDataUpdateRequestDto, UserData>();
@@ -83,5 +109,7 @@ public class MappingProfile : Profile
         // QueryFilter
 
         CreateMap<UserDataQueryFilter, UserData>();
+
+        CreateMap<UserCommendQueryFilter, UserCommend>();
     }
 }
