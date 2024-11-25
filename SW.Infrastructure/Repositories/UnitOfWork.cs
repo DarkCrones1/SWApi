@@ -20,7 +20,7 @@ public class UnitOfWork : IUnitOfWork
 
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    protected ICrudRepository<DataDream> _dataDreamRepository;
+    protected IDataDreamRepository _dataDreamRepository;
 
     protected IUserAccountRepository _userAccountRepository;
 
@@ -50,7 +50,7 @@ public class UnitOfWork : IUnitOfWork
 
         disposed = false;
 
-        _dataDreamRepository = new CrudRepository<DataDream>(_dbContext);
+        _dataDreamRepository = new DataDreamRepository(_dbContext);
 
         _userAccountRepository = new UserAccountRepository(_dbContext);
 
@@ -67,7 +67,7 @@ public class UnitOfWork : IUnitOfWork
         _localStorageRepository = new LocalStorageRepository(_configuration, _env, _httpContextAccessor);
     }
 
-    public ICrudRepository<DataDream> DataDreamRepository => _dataDreamRepository;
+    public IDataDreamRepository DataDreamRepository => _dataDreamRepository;
 
     public IUserAccountRepository UserAccountRepository => _userAccountRepository;
 

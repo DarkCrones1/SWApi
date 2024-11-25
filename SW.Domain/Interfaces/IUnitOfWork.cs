@@ -6,7 +6,7 @@ namespace SW.Domain.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {
-    ICrudRepository<DataDream> DataDreamRepository { get; }
+    IDataDreamRepository DataDreamRepository { get; }
 
     IUserAccountRepository UserAccountRepository { get; }
 

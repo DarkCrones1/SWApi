@@ -115,6 +115,7 @@ public class Startup
         services.AddScoped(typeof(ICatalogBaseRepository<>), typeof(CatalogBaseRepository<>));
         services.AddScoped<ILocalStorageRepository, LocalStorageRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IDataDreamRepository, DataDreamRepository>();
         services.AddScoped<IUserAccountRepository, UserAccountRepository>();
         services.AddScoped<IUserCommendRepository, UserCommendRepository>();
         services.AddScoped<IUserDataRepository, UserDataRepository>();
@@ -125,6 +126,7 @@ public class Startup
         services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddScoped<IMiscellaneousService, MiscellaneousService>();
         services.AddScoped<ILocalStorageService, LocalStorageService>();
+        services.AddScoped<IDataDreamService, DataDreamService>();
         services.AddScoped<IUserAccountService, UserAccountService>();
         services.AddScoped<IUserCommendService, UserCommendService>();
         services.AddScoped<IUserDataService, UserDataService>();

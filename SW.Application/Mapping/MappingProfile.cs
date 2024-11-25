@@ -50,6 +50,12 @@ public class MappingProfile : Profile
             opt => opt.MapFrom(src => EnumHelper.GetDescription<SleepQualityStatus>((SleepQualityStatus)src.SleepQualityStatus))
         );
 
+        CreateMap<DataDream, DataDreamResponseDto>()
+        .ForMember(
+            dest => dest.SleepQualityStatusName,
+            opt => opt.MapFrom(src => EnumHelper.GetDescription<SleepQualityStatus>((SleepQualityStatus)src.SleepQualityStatus))
+        );
+
         // Create
 
         CreateMap<UserAccountCreateRequestDto, UserAccount>()
@@ -102,14 +108,33 @@ public class MappingProfile : Profile
             opt => opt.MapFrom(src => "admin")
         );
 
+        CreateMap<DataDreamCreateRequestDto, DataDream>()
+        .ForMember(
+            dest => dest.Code,
+            opt => opt.MapFrom(src => Guid.NewGuid())
+        ).ForMember(
+            dest => dest.CreatedDate,
+            opt => opt.MapFrom(src => DateTime.Now)
+        ).ForMember(
+            dest => dest.StartTime,
+            opt => opt.MapFrom(src => DateTime.Now)
+        ).ForMember(
+            dest => dest.EndTime,
+            opt => opt.MapFrom(src => DateTime.Now)
+        );
+
         // Update
 
         CreateMap<UserDataUpdateRequestDto, UserData>();
+
+        CreateMap<DataDreamUpdateRequestDto, DataDream>();
 
         // QueryFilter
 
         CreateMap<UserDataQueryFilter, UserData>();
 
         CreateMap<UserCommendQueryFilter, UserCommend>();
+
+        CreateMap<DataDreamQueryFilter, DataDream>();
     }
 }
