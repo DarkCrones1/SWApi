@@ -120,7 +120,7 @@ public class MappingProfile : Profile
         //     dest => dest.StartTime,
         //     opt => opt.MapFrom(src => DateTime.Now)
         // ).ForMember(
-        //     dest => dest.EndTime,
+        // //     dest => dest.EndTime,
         //     opt => opt.MapFrom(src => DateTime.Now)
         // );
 

@@ -54,6 +54,26 @@ public class DataDreamController : ControllerBase
         return Ok(response);
     }
 
+    [HttpGet]
+    [Route("Self")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<DataDreamResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<DataDreamResponseDto>>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<IEnumerable<DataDreamResponseDto>>))]
+    public async Task<IActionResult> GetSelfInfo([FromQuery] DataDreamQueryFilter filter)
+    {
+
+        filter.UserDataId = _tokenHelper.GetUserDataId();
+        var entities = await _service.GetPaged(filter);
+        var dtos = _mapper.Map<IEnumerable<DataDreamResponseDto>>(entities);
+        var metaDataResponse = new MetaDataResponse(
+            entities.TotalCount,
+            entities.CurrentPage,
+            entities.PageSize
+        );
+        var response = new ApiResponse<IEnumerable<DataDreamResponseDto>>(data: dtos, meta: metaDataResponse);
+        return Ok(response);
+    }
+
     [HttpPost]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<DataDreamResponseDto>))]
     public async Task<IActionResult> Create([FromBody] DataDreamCreateRequestDto requestDto)
