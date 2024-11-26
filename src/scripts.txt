@@ -1,3 +1,19 @@
 para hacer la migración y sacar el script de la database => dotnet ef migrations script -o script.sql -i
 
 para hacer el publish de la api => dotnet publish --self-contained -c Release -r win-x64
+
+workstation id=SWApiDb.mssql.somee.com;
+
+packet size=4096;
+
+user id=IvanGF_SQLLogin_2;
+
+pwd=1nt6qqkewo;
+
+data source=SWApiDb.mssql.somee.com;
+
+persist security info=False;
+
+initial catalog=SWApiDb;
+
+TrustServerCertificate=True

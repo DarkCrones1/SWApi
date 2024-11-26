@@ -91,7 +91,7 @@ public class Startup
         // Add DB Connection string
         services.AddDbContext<SWDbContext>(options =>
 
-            options.UseSqlServer(Configuration.GetConnectionString("swDevString") ?? throw new InvalidOperationException("Database Connection String Not Found...")).UseLazyLoadingProxies()
+            options.UseSqlServer(Configuration.GetConnectionString("SoomeSWDevString") ?? throw new InvalidOperationException("Database Connection String Not Found...")).UseLazyLoadingProxies()
         );
 
         // Add Mappers
@@ -106,7 +106,7 @@ public class Startup
         // Configure Cors
         services.AddCors(options => options.AddPolicy("corsPolicy", builder =>
         {
-            builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
         }));
 
         // Add Repositories
@@ -193,26 +193,6 @@ public class Startup
         app.UseRouting();
 
         app.UseResponseCaching();
-
-        //app.UseRequestLocalization();
-        // app.UseRequestLocalization(new RequestLocalizationOptions
-        // {
-        //     DefaultRequestCulture = new RequestCulture("es-MX"),
-        //     SupportedCultures = new List<CultureInfo>
-        //     {
-        //         new CultureInfo("es-MX"),
-        //     },
-        //     SupportedUICultures = new List<CultureInfo>
-        //     {
-        //         new CultureInfo("es-MX"),
-        //     },
-        //     RequestCultureProviders = new List<IRequestCultureProvider>
-        //     {
-        //         new QueryStringRequestCultureProvider(),
-        //         new CookieRequestCultureProvider(),
-        //         new AcceptLanguageHeaderRequestCultureProvider(),
-        //     },
-        // });
 
         app.UseAuthentication();
 

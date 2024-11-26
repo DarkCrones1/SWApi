@@ -21,6 +21,7 @@ namespace SW.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
+[Authorize]
 public class DataDreamController : ControllerBase
 {
     private readonly IMapper _mapper;
@@ -65,6 +66,31 @@ public class DataDreamController : ControllerBase
             await _service.Create(entity);
             var dto = _mapper.Map<DataDreamResponseDto>(entity);
             var response = new ApiResponse<DataDreamResponseDto>(data: dto);
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            throw new LogicBusinessException(ex);
+        }
+    }
+
+    [HttpPost("Range")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<DataDreamResponseDto>>))]
+    public async Task<IActionResult> CreateRange([FromBody] IEnumerable<DataDreamCreateRequestDto> requestDto)
+    {
+        try
+        {
+            var entity = _mapper.Map<IEnumerable<DataDream>>(requestDto);
+            
+            foreach (var item in entity)
+            {
+                item.UserDataId = _tokenHelper.GetUserDataId();
+                item.CreatedBy = _tokenHelper.GetUserName();
+            }
+            
+            await _service.CreateRange(entity);
+            var dto = _mapper.Map<IEnumerable<DataDreamResponseDto>>(entity);
+            var response = new ApiResponse<IEnumerable<DataDreamResponseDto>>(data: dto);
             return Ok(response);
         }
         catch (Exception ex)

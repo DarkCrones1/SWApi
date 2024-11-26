@@ -7,7 +7,7 @@ public class UserDataQueryFilter : PaginationControlRequestFilter, IBaseQueryFil
 {
     public int Id { get; set; }
 
-    public Guid Code { get; set; }
+    public Guid? Code { get; set; }
 
     public string? Name { get; set; } = null!;
 

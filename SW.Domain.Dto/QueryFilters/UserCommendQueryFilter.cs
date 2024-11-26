@@ -7,7 +7,7 @@ public class UserCommendQueryFilter : PaginationControlRequestFilter, IBaseQuery
 {
     public int Id { get; set; }
 
-    public Guid Code { get; set; }
+    public Guid? Code { get; set; }
 
     public string? Name { get; set; }
 
@@ -16,4 +16,6 @@ public class UserCommendQueryFilter : PaginationControlRequestFilter, IBaseQuery
     public short SleepQualityStatus {get; set;}
 
     public bool? IsDeleted { get; set; }
+
+    public bool? RandomCommend { get; set; }
 }

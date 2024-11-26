@@ -115,13 +115,14 @@ public class MappingProfile : Profile
         ).ForMember(
             dest => dest.CreatedDate,
             opt => opt.MapFrom(src => DateTime.Now)
-        ).ForMember(
-            dest => dest.StartTime,
-            opt => opt.MapFrom(src => DateTime.Now)
-        ).ForMember(
-            dest => dest.EndTime,
-            opt => opt.MapFrom(src => DateTime.Now)
         );
+        // .ForMember(
+        //     dest => dest.StartTime,
+        //     opt => opt.MapFrom(src => DateTime.Now)
+        // ).ForMember(
+        //     dest => dest.EndTime,
+        //     opt => opt.MapFrom(src => DateTime.Now)
+        // );
 
         // Update
 

@@ -35,6 +35,9 @@ public class UserAccountRepository : CrudRepository<UserAccount>, IUserAccountRe
         if (!string.IsNullOrEmpty(entity.UserName) && !string.IsNullOrWhiteSpace(entity.UserName))
             query = query.Where(x => x.UserName.Contains(entity.UserName));
 
+        if (!string.IsNullOrEmpty(entity.Email) && !string.IsNullOrWhiteSpace(entity.Email))
+            query = query.Where(x => x.Email.Contains(entity.Email));
+
         if (entity.IsDeleted.HasValue)
             query = query.Where(x => x.IsDeleted == entity.IsDeleted);
 

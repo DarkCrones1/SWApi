@@ -21,6 +21,7 @@ namespace SW.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
+[Authorize]
 public class UserCommendController : ControllerBase
 {
     private readonly IMapper _mapper;
