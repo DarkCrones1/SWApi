@@ -54,6 +54,20 @@ public class UserDataController : ControllerBase
         return Ok(response);
     }
 
+    [HttpGet]
+    [Route("Self")]
+    [AllowAnonymous]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<UserDataResponseDto>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<UserDataResponseDto>))]
+    [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<UserDataResponseDto>))]
+    public async Task<IActionResult> GetSelf()
+    {
+        var entities = await _service.GetById(_tokenHelper.GetUserDataId());
+        var dtos = _mapper.Map<UserDataResponseDto>(entities);
+        var response = new ApiResponse<UserDataResponseDto>(data: dtos);
+        return Ok(response);
+    }
+
     [HttpPut]
     [Route("")]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<UserDataResponseDto>))]
