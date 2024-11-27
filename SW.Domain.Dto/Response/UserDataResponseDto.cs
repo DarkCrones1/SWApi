@@ -39,4 +39,8 @@ public class UserDataResponseDto
     public string FullName { get => $"{FirstName} {MiddleName} {LastName}".Trim(); }
 
     public bool? IsDeleted { get; set; }
+
+    public string Email { get; set; } = string.Empty;
+
+    public string UserName { get; set; } = string.Empty;
 }

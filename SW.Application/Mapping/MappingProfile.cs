@@ -37,6 +37,13 @@ public class MappingProfile : Profile
         .ForMember(
             dest => dest.GenderName,
             opt => opt.MapFrom(src => EnumHelper.GetDescription<Gender>((Gender)src.Gender!))
+        ).AfterMap(
+            (src, dest) => 
+            {
+                var userAccount = src.UserAccount.FirstOrDefault() ?? new UserAccount();
+                dest.Email = userAccount.Email;
+                dest.UserName = userAccount.UserName;
+            }
         );
 
         CreateMap<UserCommend, UserCommendResponseDto>().ForMember(

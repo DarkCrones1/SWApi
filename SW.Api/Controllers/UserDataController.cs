@@ -56,7 +56,6 @@ public class UserDataController : ControllerBase
 
     [HttpGet]
     [Route("Self")]
-    [AllowAnonymous]
     [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<UserDataResponseDto>))]
     [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<UserDataResponseDto>))]
     [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(ApiResponse<UserDataResponseDto>))]
